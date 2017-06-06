@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       annotations:
-        forceRedeployUniqId: "N/AA"
+        forceRedeployUniqId: "{{CF_REVISION}}"
       labels:
         service: app
     spec:
