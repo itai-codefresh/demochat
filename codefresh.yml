@@ -1,38 +1,38 @@
 version: '1.0'
 steps:
 
-#  build_step:
-#    title: Build
-#    type: build
-#    dockerfile: Dockerfile
-#    image_name: itaicodefresh/demochat
-#    tag: '${{CF_BRANCH}}'
-#
-#  unit_test:
-#    type: composition
-#    working_directory: '${{main_clone}}'
-#    composition:
-#      version: '2'
-#      services:
-#        mongo:
-#          image: 'mongo:latest'
-#          ports:
-#            - 27017
-#    composition_candidates:
-#      test:
-#        image: '${{build_step}}'
-#        command: npm test
-#
-#  launch_dev_env:
-#    type: launch-composition
-#    composition: './docker-compose.yml'
-#    environment_name: 'dev_env'
-#
-#  push_to_registry:
-#    title: Push To Registry
-#    type: push
-#    candidate: ${{build_step}}
-#    tag: ${{CF_BRANCH}}
+  build_step:
+    title: Build
+    type: build
+    dockerfile: Dockerfile
+    image_name: itaicodefresh/demochat
+    tag: '${{CF_BRANCH}}'
+
+  unit_test:
+    type: composition
+    working_directory: '${{main_clone}}'
+    composition:
+      version: '2'
+      services:
+        mongo:
+          image: 'mongo:latest'
+          ports:
+            - 27017
+    composition_candidates:
+      test:
+        image: '${{build_step}}'
+        command: npm test
+
+  launch_dev_env:
+    type: launch-composition
+    composition: './docker-compose.yml'
+    environment_name: 'dev_env'
+
+  push_to_registry:
+    title: Push To Registry
+    type: push
+    candidate: ${{build_step}}
+    tag: ${{CF_BRANCH}}
 
   deploy_to_kubernetes:
     image: codefresh/cf-deploy-kubernetes
