@@ -27,12 +27,20 @@ steps:
     type: launch-composition
     composition: './docker-compose.yml'
     environment_name: 'dev_env'
+    when:
+      branch:
+        only:
+          - /^master/i
 
   push_to_registry:
     title: Push To Registry
     type: push
     candidate: ${{build_step}}
     tag: ${{CF_BRANCH}}
+    when:
+      branch:
+        only:
+          - master
 
   deploy_to_kubernetes:
     image: codefresh/cf-deploy-kubernetes
@@ -44,3 +52,7 @@ steps:
       - KUBERNETES_USER=${{KUBERNETES_USER}}
       - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
       - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
+    when:
+      branch:
+        only:
+          - master
