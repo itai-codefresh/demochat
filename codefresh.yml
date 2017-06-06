@@ -26,7 +26,7 @@ steps:
 
   launch_dev_env:
     type: launch-composition
-    composition: './docker-compose'
+    composition: './docker-compose.yml'
     environment_name: 'dev_env'
 
 
