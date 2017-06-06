@@ -45,7 +45,3 @@ steps:
       - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
       - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
       - DOCKER_IMAGE_TAG=${{CF_BRANCH}}
-    when:
-      condition:
-        all:
-          deploy_to_kubernetes: '"${{DEPLOY_KUBERNETES}}" == "true"'
