@@ -23,15 +23,6 @@ steps:
         image: '${{build_step}}'
         command: npm test
 
-  launch_dev_env:
-    type: launch-composition
-    composition: './docker-compose.yml'
-    environment_name: 'dev_env'
-    when:
-      branch:
-        only:
-          - /^CF-.*/i
-
   push_to_registry:
     title: Push To Registry
     type: push
@@ -41,3 +32,12 @@ steps:
       branch:
         only:
           - master
+
+  launch_dev_env:
+    type: launch-composition
+    composition: './docker-compose.yml'
+    environment_name: 'dev_env'
+    when:
+      branch:
+        only:
+          - /CF-.*/i
