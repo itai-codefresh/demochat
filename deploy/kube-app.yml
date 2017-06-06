@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       annotations:
-        forceRedeployUniqId: "N/A"
+        forceRedeployUniqId: "N/AA"
       labels:
         service: app
     spec:
@@ -21,4 +21,8 @@ spec:
         ports:
         - containerPort: 5000
           protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 5000
 
