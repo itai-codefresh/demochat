@@ -1,7 +1,7 @@
 version: '2'
 services:
   demochat:
-    image: 'containers101/demochat:master'
+    image: 'itaicodefresh/demochat:master'
     ports:
       - 5000
   mongo:

@@ -5,7 +5,7 @@ steps:
     title: Build
     type: build
     dockerfile: Dockerfile
-    image_name: containers101/demochat
+    image_name: itaicodefresh/demochat
     tag: '${{CF_BRANCH}}'
 
   unit_test:
