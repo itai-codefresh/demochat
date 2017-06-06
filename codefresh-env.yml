@@ -37,7 +37,3 @@ steps:
     type: launch-composition
     composition: './docker-compose.yml'
     environment_name: 'dev_env'
-    when:
-      branch:
-        only:
-          - /CF-.*/i

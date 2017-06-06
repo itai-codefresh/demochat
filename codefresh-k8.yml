@@ -37,10 +37,6 @@ steps:
     type: launch-composition
     composition: './docker-compose.yml'
     environment_name: 'dev_env'
-    when:
-      branch:
-        only:
-          - /CF-.*/i
 
   deploy_to_kubernetes:
     image: codefresh/cf-deploy-kubernetes
