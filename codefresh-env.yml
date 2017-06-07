@@ -37,3 +37,18 @@ steps:
     type: launch-composition
     composition: './docker-compose.yml'
     environment_name: 'dev_env'
+
+  deploy_to_kubernetes:
+    image: codefresh/cf-deploy-kubernetes
+    tag: latest
+    working_directory: ${{main_clone}}
+    commands:
+      - /cf-deploy-kubernetes ./deploy/kube-app.yml
+    environment:
+      - KUBERNETES_USER=${{KUBERNETES_USER}}
+      - KUBERNETES_PASSWORD=${{KUBERNETES_PASSWORD}}
+      - KUBERNETES_SERVER=${{KUBERNETES_SERVER}}
+    when:
+      branch:
+        only:
+          - master
